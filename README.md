@@ -36,3 +36,18 @@ It wrote the code, ran away, and now the game is unplayable.
 ## 🚀 Stretch Features
 
 - [ ] [If you choose to complete Challenge 4, insert a screenshot of your Enhanced Game UI here]
+
+
+## 🚀 Setup for MacOS/Linux
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+streamlit run app.py \
+  --server.address 0.0.0.0 \
+  --server.enableCORS false \
+  --server.enableXsrfProtection false
+
+python3 -m pytest
+```
