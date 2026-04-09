@@ -6,6 +6,7 @@ from logic_utils import (
     check_guess, 
     update_score
 )
+from ai_agent import get_ai_hint
 
 st.set_page_config(page_title="Glitchy Guesser", page_icon="🎮")
 
@@ -105,8 +106,16 @@ if submit:
 
         outcome, message = check_guess(guess_int, secret)
 
-        if show_hint:
-            st.warning(message)
+        if show_hint and outcome != "Win":
+            with st.spinner("AI Game Master is thinking..."):
+                ai_hint = get_ai_hint(
+                    st.session_state.secret, 
+                    st.session_state.history, 
+                    difficulty
+                )
+            st.info(f"💡 AI Strategy Hint: {ai_hint}")
+        
+        st.warning(message)
 
         st.session_state.score = update_score(
             current_score=st.session_state.score,

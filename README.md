@@ -44,10 +44,9 @@ It wrote the code, ran away, and now the game is unplayable.
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-streamlit run app.py \
-  --server.address 0.0.0.0 \
-  --server.enableCORS false \
-  --server.enableXsrfProtection false
+streamlit run app.
+py --server.enableCORS=false --server.enableXsrfProtection=false --server.address=0.0.0.
+0
 
 python3 -m pytest
 ```
