@@ -55,3 +55,28 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
   Next time, I would ask it to explain the code to  a child before debugging.
 - In one or two sentences, describe how this project changed the way you think about AI generated code.
   This project showed me that AI is great for recognizing syntax, but the engineer has to be proactive about understanding logic and system design. 
+
+## 6. Reflection on AI Collaboration and System Design
+- How did you use AI during development (prompting, debugging, design)?
+I used Gemini to fix session state errors by sharing code snippets and error logs. I also used structured prompting to design the "Hint Agent" as a separate architectural layer.
+
+- Identify at least one helpful and one flawed AI suggestion.
+A helpful suggestion was adding a string-matching guardrail to prevent the AI from leaking the secret number. A flawed suggestion was an overkill RAG setup with a vector database, which I replaced with a simpler prompt.
+
+- Reflect on system limitations and future improvements.
+The system requires an active internet connection and API key to function. I plan to add a second AI model to score how cryptic the hints are before they are displayed.
+
+- What are the limitations or biases in your system?
+The system depends on external API availability and may show bias toward mathematical hints over creative ones. It also lacks a "memory" of hints across different game sessions.
+
+- Could your AI be misused, and how would you prevent that?
+The AI could be manipulated via prompt injection to reveal the secret number immediately. I prevent this using a hard-coded string-matching guardrail that intercepts the secret before display.
+
+- What surprised you while testing your AI's reliability?
+I was surprised by how often the AI tried to "chat" rather than just giving a hint. It occasionally hallucinated that the user had already won when they were only close.
+
+- Describe your collaboration with AI during this project.
+AI helped me structure the modular logic and debug session state issues. It gave a helpful suggestion for the guardrail logic but a flawed one regarding an over-complicated RAG setup.
+
+- Testing
+The AI did not struggled when context was provided. It provided accurate suggestions, although sometimes it was too verbose.
